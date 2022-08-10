@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Cell {
     private int strength, x, y, id;
+    private HashMap<String,Integer> concentration;
 
-    // Default constructor method
+
+    // Default constructor method for Cell
     public Cell() {
         setStrength(0);
         setX(0);
@@ -11,13 +14,20 @@ public class Cell {
         setId(0);
     }
 
-    // User-inputted constructor method
+    // User-inputted constructor method for Cell
     public Cell(int strength, int x, int y, int id) {
         setStrength(strength);
         setX(x);
         setY(y);
         setId(id);
     }
+
+    // Concentration HashMap constructor method
+    public HashMap<String, Integer> setConcentration(){
+        concentration = new HashMap<>();
+        return concentration;
+    }
+
 
     // interactNeighbours method
     public void interactNeighbours(ArrayList<Cell> neighbors) {
@@ -66,7 +76,7 @@ public class Cell {
 
     // Main method
     public static void main(String[] args) {
-
+        setConcentration();
 
     }
 }
