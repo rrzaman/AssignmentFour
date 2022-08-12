@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Cell {
     private int strength, x, y, id;
-    private HashMap<String,Integer> concentration;
+    private static HashMap<String, Integer> concentrations;
+    private static HashSet<String> signals;
+    private static ArrayList<Cell> adjacentCells;
 
 
     // Default constructor method for Cell
@@ -12,6 +15,9 @@ public class Cell {
         setX(0);
         setY(0);
         setId(0);
+        concentrations = new HashMap<>();
+        signals = new HashSet<>();
+        adjacentCells = new ArrayList<>();
     }
 
     // User-inputted constructor method for Cell
@@ -20,14 +26,25 @@ public class Cell {
         setX(x);
         setY(y);
         setId(id);
+        concentrations = new HashMap<>();
+        signals = new HashSet<>();
+        adjacentCells = new ArrayList<>();
     }
 
-    // Concentration HashMap constructor method
-    public HashMap<String, Integer> setConcentration(){
-        concentration = new HashMap<>();
-        return concentration;
+    // Concentration HashMap constructor and setter method
+    public static void setConcentration(String chemical, int conc) {
+        concentrations.put(chemical, conc);
     }
 
+    // Signal molecule HashSet constructor and setter method
+    public static void setSignal(String molecule){
+        signals.add(molecule);
+    }
+
+    // Adjacent cell ArrayList constructor and setter method
+    public static void setAdjacentCells(Cell neighbour){
+        adjacentCells.add(neighbour);
+    }
 
     // interactNeighbours method
     public void interactNeighbours(ArrayList<Cell> neighbors) {
@@ -76,7 +93,17 @@ public class Cell {
 
     // Main method
     public static void main(String[] args) {
-        setConcentration();
+        Cell muscle = new Cell(50,5,3,1);
+        Cell cancer = new Cell(100, 5, 2,0);
+
+        setConcentration("ATP", 500);
+        setAdjacentCells(muscle);
+        setSignal("cancer");
+
+        System.out.println(adjacentCells.size());
+        System.out.println(concentrations);
+        System.out.println(signals);
+
 
     }
 }
