@@ -93,17 +93,6 @@ public class Cell {
 
     // Main method
     public static void main(String[] args) {
-        Cell muscle = new Cell(50,5,3,1);
-        Cell cancer = new Cell(100, 5, 2,0);
-
-        setConcentration("ATP", 500);
-        setAdjacentCells(muscle);
-        setSignal("cancer");
-
-        System.out.println(adjacentCells.size());
-        System.out.println(concentrations);
-        System.out.println(signals);
-
 
     }
 }
